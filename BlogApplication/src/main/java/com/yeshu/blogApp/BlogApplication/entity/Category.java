@@ -12,18 +12,18 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity
-public class User {
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(name = "username", nullable = false)
-    private String name;
-    private String email;
-    private String password;
-    private String about;
+    private Integer id;
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @Column(nullable = false)
+    private String categoryTitle;
+
+    private String categoryDescription;
+
+    @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
     private List<Post> posts = new ArrayList<>();
 
 }
