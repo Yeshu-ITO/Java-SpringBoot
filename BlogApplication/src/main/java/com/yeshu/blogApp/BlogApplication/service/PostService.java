@@ -1,7 +1,7 @@
 package com.yeshu.blogApp.BlogApplication.service;
 
-import com.yeshu.blogApp.BlogApplication.entity.Post;
 import com.yeshu.blogApp.BlogApplication.payloads.PostDto;
+import com.yeshu.blogApp.BlogApplication.payloads.PostResponse;
 
 import java.util.List;
 
@@ -9,17 +9,19 @@ public interface PostService {
 
     PostDto createPost(PostDto postDto,Integer userId, Integer categoryId);
 
-    Post updatePost(PostDto postDto,Integer postId);
+    PostDto updatePost(PostDto postDto,Integer postId);
 
     void deletePost(Integer postId);
 
-    List<Post> getAllPost();
+    PostResponse getAllPost(Integer pageNumber, Integer PageSize, String sortBy, String sortDir);
 
-    Post getPostById(Integer postId);
+    PostDto getPostById(Integer postId);
 
-    List<Post> getPostByCategory(Integer categoryId);
+    List<PostDto> getPostByCategory(Integer categoryId);
 
-    List<Post> getPostByUser(Integer userId);
+    List<PostDto> getPostByUser(Integer userId);
 
-    List<Post> searchPost(String keyword);
+    List<PostDto> searchPostByTitle(String keyword);
+
+    List<PostDto> searchPostByContent(String keyword);
 }
